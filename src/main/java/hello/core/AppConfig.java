@@ -22,9 +22,6 @@ public class AppConfig {
     }
 
     @Bean
-//    public static MemberRepository memberRepository() {
-//        return new MemoryMemberRepository();
-//    }
     public MemberRepository memberRepository() {
         System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
@@ -34,6 +31,7 @@ public class AppConfig {
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null;
     }
 
     @Bean
