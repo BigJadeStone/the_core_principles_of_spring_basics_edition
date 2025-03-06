@@ -3,12 +3,14 @@ package hello.core.common;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
-@Scope(value = "request")
+//@Scope("request") // 파라미터가 하나일 때는 왼쪽과 같이 쓰면됨
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS) // 파라미터가 2개 이상일 때는 value를 왼쪽과 같이 써줘야 됨.
 public class MyLogger {
 
     private String uuid;
